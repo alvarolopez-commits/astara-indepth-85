@@ -1,0 +1,554 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Auto OEMs are becoming technology-industrial platforms &mdash; Astara Intelligence In Depth #87</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --bg:#221e41;--bg-dark:#1a1636;--bg-card:#2d2a55;--bg-mid:#261f49;
+  --border:rgba(139,205,255,0.18);--accent:#8bcdff;--accent2:#86bfc6;
+  --txt:#f0f4f8;--txt-sec:#cfe0f0;--txt-muted:#7a9ab8;
+  --col-auto:#8bcdff;--col-ai:#a8d8ff;--col-chips:#86bfc6;
+  --col-robot:#7a9ab8;--col-aerial:#60a8de;
+  --font-d:"Orbitron",sans-serif;--font-kpi:"Orbitron",sans-serif;
+  --font-b:"Montserrat",system-ui,sans-serif;--font-e:"Montserrat",system-ui,sans-serif;
+  --g:16px;--ease:cubic-bezier(0.16,1,0.3,1);
+}
+@media(min-width:480px){:root{--g:24px;}}
+@media(min-width:768px){:root{--g:40px;}}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;overflow-x:hidden;}
+body{background:var(--bg);color:var(--txt-sec);font-family:var(--font-b);-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+img{max-width:100%;height:auto;display:block;}
+.cover{position:relative;min-height:65vh;padding:var(--g) var(--g) 52px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;}
+.cover__photo{position:absolute;inset:0;}
+.cover__photo img{width:100%;height:100%;object-fit:cover;object-position:center center;}
+.cover__overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(34,30,65,0.97) 0%,rgba(34,30,65,0.88) 42%,rgba(34,30,65,0.3) 72%,rgba(34,30,65,0.05) 100%);}
+.cover__content{position:relative;z-index:2;max-width:55%;}
+.cover__logo{margin-bottom:0;}
+.cover__logo img{height:20px;width:auto;}
+.cover__topbar{position:relative;z-index:2;display:flex;align-items:center;gap:12px;flex-wrap:wrap;row-gap:8px;}
+.cover__divider{width:1px;height:16px;background:rgba(139,205,255,0.3);flex-shrink:0;}
+.cover__label{font-family:var(--font-d);font-size:9px;font-weight:700;letter-spacing:2px;color:var(--txt-muted);text-transform:uppercase;white-space:nowrap;}
+@media(max-width:400px){.cover__logo img{height:17px;}}
+.cover__pill{display:inline-flex;border:1px solid rgba(139,205,255,0.22);border-radius:20px;padding:5px 13px;margin-bottom:16px;margin-top:16px;}
+.cover__pill span{font-family:var(--font-d);font-size:8px;font-weight:700;letter-spacing:2px;color:var(--txt-muted);text-transform:uppercase;}
+.cover__title{font-family:var(--font-d);font-size:clamp(30px,5vw,66px);font-weight:700;color:var(--txt);line-height:1.05;margin-bottom:18px;text-transform:uppercase;}
+.cover__title span{color:var(--accent);}
+.cover__sub{font-family:var(--font-e);font-size:clamp(14px,1.5vw,17px);font-weight:400;color:var(--txt);max-width:440px;line-height:1.6;}
+.cover::after{content:"";position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(to bottom,transparent,var(--bg));pointer-events:none;z-index:1;}
+@media(max-width:600px){.cover__content{max-width:100%;}.cover__overlay{background:linear-gradient(to bottom,rgba(34,30,65,0.55) 0%,rgba(34,30,65,0.95) 55%,rgba(34,30,65,0.99) 100%);}}
+.cover__meta{margin-top:28px;display:flex;gap:24px;flex-wrap:wrap;align-items:center;}
+.cover__date{font-family:var(--font-d);font-size:10px;letter-spacing:2px;color:var(--txt-muted);text-transform:uppercase;}
+.cover__tag{font-size:11px;font-weight:600;letter-spacing:1.5px;color:var(--bg-dark);background:var(--accent);padding:4px 10px;border-radius:4px;text-transform:uppercase;}
+section{padding:60px var(--g);}
+@media(min-width:768px){section{padding:80px var(--g);}}
+.chapter{max-width:1100px;margin:0 auto;}
+.chapter-label{display:flex;align-items:center;gap:12px;margin-bottom:20px;}
+.chapter-num{font-family:var(--font-d);font-size:11px;font-weight:700;letter-spacing:2px;color:var(--accent);border:1px solid var(--accent);padding:3px 8px;border-radius:3px;}
+.chapter-label-text{font-family:var(--font-d);font-size:10px;font-weight:700;letter-spacing:3px;color:var(--txt-muted);text-transform:uppercase;}
+.chapter-title{font-family:var(--font-d);font-size:clamp(18px,3vw,38px);font-weight:700;color:var(--txt);line-height:1.15;margin-bottom:12px;letter-spacing:-0.02em;text-transform:uppercase;}
+.chapter-title span{color:var(--accent);}
+.body-lead{font-family:var(--font-e);font-size:clamp(14px,1.6vw,17px);color:var(--txt-sec);line-height:1.7;margin-bottom:24px;max-width:740px;}
+.body-text{font-size:15px;line-height:1.75;color:var(--txt-sec);margin-bottom:18px;max-width:740px;}
+.two-col{display:grid;gap:40px;margin-top:36px;}
+@media(min-width:768px){.two-col{grid-template-columns:1fr 1fr;}}
+.two-col--6040{display:grid;gap:40px;margin-top:36px;}
+@media(min-width:768px){.two-col--6040{grid-template-columns:3fr 2fr;}}
+.kpi-strip{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:36px;}
+@media(min-width:600px){.kpi-strip{grid-template-columns:repeat(3,1fr);}}
+@media(min-width:960px){.kpi-strip{grid-template-columns:repeat(6,1fr);}}
+.kpi-card{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:24px 16px;text-align:center;min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.kpi-card__val{font-family:var(--font-d);font-size:clamp(22px,3vw,42px);font-weight:700;color:var(--accent);line-height:1;font-variant-numeric:tabular-nums;white-space:nowrap;}
+.kpi-card__label{font-size:11px;font-weight:600;letter-spacing:1px;color:var(--txt-muted);text-transform:uppercase;margin-top:8px;line-height:1.4;}
+.bar-section{margin-top:28px;}
+.bar-label{font-family:var(--font-d);font-size:10px;font-weight:700;letter-spacing:2px;color:var(--txt-muted);text-transform:uppercase;margin-bottom:16px;}
+.bar-item{margin-bottom:12px;}
+.bar-item__header{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px;}
+.bar-item__name{font-size:13px;font-weight:500;color:var(--txt-sec);}
+.bar-item__val{font-family:var(--font-e);font-size:14px;font-weight:600;color:var(--accent);}
+.bar-track{height:8px;background:rgba(46,80,114,0.5);border-radius:4px;overflow:hidden;}
+.bar-fill{height:100%;border-radius:4px;background:var(--accent);animation:barGrow 1s var(--ease) forwards;transform-origin:left;transform:scaleX(0);}
+@keyframes barGrow{to{transform:scaleX(1);}}
+.pull-quote{border-left:3px solid var(--accent);padding:20px 24px;background:var(--bg-mid);border-radius:0 10px 10px 0;margin:32px 0;}
+.pull-quote p{font-family:var(--font-e);font-size:clamp(15px,2vw,19px);color:var(--txt);line-height:1.6;font-style:italic;}
+.pull-quote cite{display:block;margin-top:12px;font-size:12px;color:var(--txt-muted);font-style:normal;letter-spacing:1px;}
+.timeline{margin-top:36px;position:relative;}
+.timeline::before{content:"";position:absolute;left:70px;top:0;bottom:0;width:2px;background:var(--border);}
+@media(min-width:600px){.timeline::before{left:90px;}}
+.tl-year-group{margin-bottom:36px;}
+.tl-year-label{font-family:var(--font-d);font-size:12px;font-weight:700;color:var(--accent);background:var(--bg-dark);border:1px solid var(--accent);padding:4px 10px;border-radius:20px;display:inline-block;margin-bottom:16px;position:relative;z-index:2;}
+.tl-entry{display:flex;gap:16px;margin-bottom:14px;padding-left:90px;position:relative;}
+@media(min-width:600px){.tl-entry{padding-left:110px;}}
+.tl-dot{display:none;}
+.tl-card{background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:12px 16px;flex:1;border-left:3px solid var(--accent);}
+.tl-card--auto{border-left-color:var(--col-auto);}
+.tl-card--ai{border-left-color:var(--col-ai);}
+.tl-card--chips{border-left-color:var(--col-chips);}
+.tl-card--robot{border-left-color:var(--col-robot);}
+.tl-card--aerial{border-left-color:var(--col-aerial);}
+.tl-card__oem{font-family:var(--font-d);font-size:10px;font-weight:700;color:var(--txt-muted);letter-spacing:1px;text-transform:uppercase;}
+.tl-card__partner{font-size:13px;font-weight:600;color:var(--txt);margin:2px 0;}
+.tl-card__desc{font-size:12px;color:var(--txt-muted);line-height:1.5;}
+.tl-card__tags{margin-top:8px;display:flex;gap:6px;flex-wrap:wrap;}
+.tl-tag{font-size:10px;font-weight:600;letter-spacing:0.5px;padding:2px 8px;border-radius:10px;}
+.tl-tag--auto{background:rgba(139,205,255,0.12);color:var(--col-auto);border:1px solid rgba(139,205,255,0.25);}
+.tl-tag--ai{background:rgba(203,178,240,0.12);color:var(--col-ai);border:1px solid rgba(203,178,240,0.25);}
+.tl-tag--chips{background:rgba(240,201,122,0.12);color:var(--col-chips);border:1px solid rgba(240,201,122,0.25);}
+.tl-tag--robot{background:rgba(224,122,95,0.12);color:var(--col-robot);border:1px solid rgba(224,122,95,0.25);}
+.tl-tag--aerial{background:rgba(122,207,184,0.12);color:var(--col-aerial);border:1px solid rgba(122,207,184,0.25);}
+.tl-tag--mech{background:var(--bg-mid);color:var(--txt-muted);border:1px solid var(--border);}
+.oem-grid{display:grid;gap:20px;margin-top:28px;}
+@media(min-width:600px){.oem-grid{grid-template-columns:1fr 1fr;}}
+@media(min-width:1024px){.oem-grid{grid-template-columns:repeat(3,1fr);}}
+.oem-card{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:24px;position:relative;overflow:hidden;}
+.oem-card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));}
+.oem-card__name{font-family:var(--font-d);font-size:13px;font-weight:700;color:var(--txt);margin-bottom:6px;}
+.oem-card__region{font-size:11px;color:var(--txt-muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:14px;}
+.oem-card__deal{display:flex;gap:10px;align-items:flex-start;margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid var(--border);}
+.oem-card__deal:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+.oem-card__deal-year{font-family:var(--font-d);font-size:10px;font-weight:700;color:var(--accent);flex-shrink:0;padding-top:2px;min-width:40px;}
+.oem-card__deal-partner{font-size:13px;font-weight:600;color:var(--txt);}
+.oem-card__deal-desc{font-size:11px;color:var(--txt-muted);line-height:1.5;margin-top:2px;}
+.table-wrap{overflow-x:auto;margin-top:24px;border-radius:10px;border:1px solid var(--border);}
+.density-table{width:100%;border-collapse:collapse;font-size:13px;}
+.density-table thead tr{background:var(--bg-dark);}
+.density-table th{padding:12px 14px;text-align:left;font-family:var(--font-d);font-size:9px;font-weight:700;letter-spacing:2px;color:var(--txt-muted);text-transform:uppercase;border-bottom:1px solid var(--border);white-space:nowrap;}
+.density-table td{padding:11px 14px;border-bottom:1px solid rgba(46,80,114,0.4);color:var(--txt-sec);vertical-align:top;line-height:1.5;}
+.density-table tbody tr:last-child td{border-bottom:none;}
+.density-table tbody tr:hover td{background:rgba(30,52,82,0.6);}
+.sp{display:inline-block;font-size:10px;font-weight:600;padding:2px 8px;border-radius:10px;white-space:nowrap;}
+.sp-auto{background:rgba(139,205,255,0.12);color:var(--col-auto);border:1px solid rgba(139,205,255,0.25);}
+.sp-ai{background:rgba(203,178,240,0.12);color:var(--col-ai);border:1px solid rgba(203,178,240,0.25);}
+.sp-chips{background:rgba(240,201,122,0.12);color:var(--col-chips);border:1px solid rgba(240,201,122,0.25);}
+.sp-robot{background:rgba(224,122,95,0.12);color:var(--col-robot);border:1px solid rgba(224,122,95,0.25);}
+.sp-aerial{background:rgba(122,207,184,0.12);color:var(--col-aerial);border:1px solid rgba(122,207,184,0.25);}
+.mp{display:inline-block;font-size:10px;font-weight:600;padding:2px 8px;border-radius:4px;background:var(--bg-mid);color:var(--txt-muted);border:1px solid var(--border);}
+.vc-grid{display:grid;gap:20px;margin-top:28px;}
+@media(min-width:768px){.vc-grid{grid-template-columns:1fr 1fr;}}
+.vc-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:20px;}
+.vc-card__title{font-family:var(--font-d);font-size:10px;font-weight:700;letter-spacing:2px;color:var(--txt-muted);text-transform:uppercase;margin-bottom:16px;}
+.mini-stat-list{margin-top:16px;}
+.mini-stat{display:flex;justify-content:space-between;align-items:flex-start;padding:10px 0;border-bottom:1px solid rgba(46,80,114,0.4);}
+.mini-stat:last-child{border-bottom:none;}
+.mini-stat__name{font-size:13px;color:var(--txt-sec);display:flex;flex-direction:column;gap:2px;}
+.mini-stat__note{font-size:11px;color:var(--txt-muted);}
+.mini-stat__val{font-family:var(--font-kpi);font-size:16px;font-weight:700;color:var(--txt);}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.7s var(--ease),transform 0.7s var(--ease);}
+.reveal.visible{opacity:1;transform:none;}
+.reveal-d1{transition-delay:0.1s;}
+.reveal-d2{transition-delay:0.2s;}
+.reveal-d3{transition-delay:0.3s;}
+.section-divider{height:1px;background:var(--border);max-width:1100px;margin:0 auto;}
+.ytd-badge{display:inline-block;font-size:10px;font-weight:700;letter-spacing:1px;color:var(--accent);background:rgba(139,205,255,0.1);border:1px solid rgba(139,205,255,0.3);padding:2px 8px;border-radius:4px;margin-left:8px;vertical-align:middle;}
+.footer{background:var(--bg-dark);padding:48px var(--g);text-align:center;border-top:1px solid var(--border);}
+.footer__divider{width:40px;height:1px;background:var(--border);margin:20px auto;}
+.footer__text{font-size:13px;color:var(--txt-muted);line-height:1.7;max-width:500px;margin:0 auto;}
+.footer__disclaimer{font-size:11px;color:rgba(122,154,184,0.55);margin-top:16px;max-width:600px;margin-left:auto;margin-right:auto;}
+
+/* FEATURE DATA VISUALS */
+.data-viz{margin-top:34px;}
+.data-viz__shell{display:grid;grid-template-columns:minmax(0,1fr);gap:18px;}
+@media(min-width:900px){.data-viz__shell{grid-template-columns:minmax(0,1fr) 260px;gap:22px;align-items:stretch;}}
+.data-viz__panel,.data-viz__insight{background:linear-gradient(145deg,rgba(45,42,85,0.94),rgba(26,22,54,0.96));border:1px solid rgba(139,205,255,0.22);border-radius:16px;position:relative;overflow:hidden;}
+.data-viz__panel{padding:18px 18px 10px;}
+@media(min-width:768px){.data-viz__panel{padding:24px 26px 14px;}}
+.data-viz__panel::before,.data-viz__insight::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 16% 0%,rgba(139,205,255,0.08),transparent 35%);}
+.data-viz__head{display:none;grid-template-columns:54px minmax(155px,1.1fr) minmax(180px,2fr) 76px 86px;gap:14px;align-items:end;padding:0 0 10px;color:var(--txt-muted);font-family:var(--font-d);font-size:8px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;}
+@media(min-width:700px){.data-viz__head{display:grid;}}
+.data-viz__head span:nth-last-child(-n+2){text-align:right;}
+.data-row{--row-color:var(--accent);display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:12px;align-items:center;padding:15px 0;border-top:1px solid rgba(139,205,255,0.12);position:relative;}
+.data-row:first-of-type{border-top:none;}
+@media(min-width:700px){.data-row{grid-template-columns:54px minmax(155px,1.1fr) minmax(180px,2fr) 76px 86px;gap:14px;padding:17px 0;}}
+.data-row__icon{width:42px;height:42px;border-radius:11px;display:grid;place-items:center;color:var(--row-color);background:color-mix(in srgb,var(--row-color) 13%,transparent);border:1px solid color-mix(in srgb,var(--row-color) 45%,transparent);box-shadow:inset 0 0 20px color-mix(in srgb,var(--row-color) 9%,transparent);}
+.data-row__icon svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;}
+.data-row__name{font-size:13px;font-weight:600;color:var(--txt);line-height:1.35;}
+.data-row__bar{grid-column:2 / -1;height:9px;border-radius:999px;background:rgba(139,205,255,0.09);overflow:visible;position:relative;margin-top:2px;}
+@media(min-width:700px){.data-row__bar{grid-column:auto;margin-top:0;}}
+.data-row__fill{width:var(--w);height:100%;border-radius:999px;background:linear-gradient(90deg,color-mix(in srgb,var(--row-color) 82%,white 4%),var(--row-color));transform:scaleX(0);transform-origin:left;transition:transform 1s var(--ease);box-shadow:0 0 16px color-mix(in srgb,var(--row-color) 35%,transparent);position:relative;}
+.data-row__fill::after{content:"";position:absolute;right:-5px;top:50%;width:13px;height:13px;border-radius:50%;transform:translateY(-50%);background:var(--txt);border:3px solid var(--row-color);box-shadow:0 0 12px var(--row-color);}
+.reveal.visible .data-row__fill{transform:scaleX(1);}
+.data-row__count,.data-row__share{font-family:var(--font-kpi);font-weight:700;font-variant-numeric:tabular-nums;text-align:right;line-height:1;}
+.data-row__count{font-size:21px;color:var(--txt);}
+.data-row__share{font-size:14px;color:var(--row-color);padding-left:12px;border-left:1px solid rgba(139,205,255,0.2);}
+@media(max-width:699px){.data-row__count{position:absolute;right:74px;top:17px;font-size:17px}.data-row__share{position:absolute;right:0;top:19px;font-size:12px}.data-row__name{padding-right:120px}.data-row__bar{margin-right:0;}}
+.data-viz__insight{padding:26px 24px;display:flex;flex-direction:column;justify-content:center;min-height:210px;}
+.data-viz__insight-icon{width:64px;height:64px;border:1px solid rgba(139,205,255,0.35);border-radius:50%;display:grid;place-items:center;color:var(--accent);margin-bottom:24px;box-shadow:0 0 24px rgba(139,205,255,0.12);}
+.data-viz__insight-icon svg{width:30px;height:30px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;}
+.data-viz__insight p{font-family:var(--font-e);font-size:17px;line-height:1.55;color:var(--txt);}
+.data-viz__notes{display:grid;gap:10px;margin-top:14px;padding:0 2px;}
+@media(min-width:700px){.data-viz__notes{grid-template-columns:1fr 1fr;gap:20px;}}
+.data-note{display:flex;gap:10px;align-items:flex-start;font-size:11px;line-height:1.55;color:var(--txt-muted);}
+.data-note__icon{width:22px;height:22px;border:1px solid rgba(139,205,255,0.35);border-radius:50%;display:grid;place-items:center;color:var(--accent);font-family:var(--font-d);font-size:9px;font-weight:700;flex:0 0 auto;}
+.signal-stack{display:grid;gap:14px;align-content:start;}
+.signal-card{background:linear-gradient(145deg,rgba(45,42,85,0.9),rgba(38,31,73,0.92));border:1px solid var(--border);border-radius:12px;padding:18px;position:relative;overflow:hidden;}
+.signal-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--signal-color,var(--accent));}
+.signal-card__value{font-family:var(--font-d);font-size:28px;font-weight:700;color:var(--signal-color,var(--accent));line-height:1;}
+.signal-card__label{font-size:12px;font-weight:600;color:var(--txt);margin-top:8px;}
+.signal-card__text{font-size:11px;color:var(--txt-muted);line-height:1.5;margin-top:5px;}
+
+
+/* OEM ECOSYSTEMS — flat, HTML-friendly */
+.ecosystem-stack{display:grid;gap:28px;margin-top:30px;}
+.ecosystem-panel{background:#201c3d;border:1px solid rgba(207,224,240,.22);border-radius:18px;padding:28px;overflow:hidden;}
+.eco-head{padding-bottom:22px;border-bottom:1px solid rgba(207,224,240,.14);}
+.eco-kicker{font-family:var(--font-d);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:10px;}
+.eco-title{font-family:var(--font-d);font-size:clamp(26px,4vw,48px);line-height:1;color:var(--txt);text-transform:uppercase;}
+.eco-sub{font-size:13px;color:var(--txt-muted);margin-top:10px;}
+.eco-groups{display:grid;grid-template-columns:repeat(12,1fr);gap:18px;margin-top:22px;}
+.eco-group{grid-column:span 12;border-top:2px solid var(--group-color,var(--accent));padding-top:14px;}
+.eco-group--wide{grid-column:span 8}.eco-group--narrow{grid-column:span 4}.eco-group--half{grid-column:span 6}
+.eco-group__title{font-family:var(--font-d);font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--group-color,var(--accent));margin-bottom:12px;}
+.eco-cards{display:grid;grid-template-columns:repeat(var(--cols,3),minmax(0,1fr));gap:12px;}
+.eco-card{background:#29254b;border:1px solid rgba(207,224,240,.16);border-radius:12px;padding:18px;min-height:190px;display:flex;flex-direction:column;}
+.eco-year{align-self:flex-start;font-family:var(--font-d);font-size:9px;letter-spacing:1px;color:var(--txt-muted);background:rgba(139,205,255,.08);border:1px solid rgba(139,205,255,.18);border-radius:5px;padding:3px 7px;margin-bottom:14px;}
+.eco-card h3{font-size:18px;line-height:1.25;color:var(--txt);margin-bottom:7px;}
+.eco-card__move{font-size:12px;font-weight:600;color:var(--group-color,var(--accent));line-height:1.45;margin-bottom:16px;}
+.eco-card p{font-size:12px;line-height:1.6;color:var(--txt-sec);margin-top:auto;}
+.eco-note{font-size:10px;color:rgba(122,154,184,.72);margin-top:18px;}
+@media(max-width:860px){.eco-group--wide,.eco-group--narrow,.eco-group--half{grid-column:span 12}.eco-cards{grid-template-columns:repeat(2,minmax(0,1fr));}}
+@media(max-width:560px){.ecosystem-panel{padding:20px}.eco-cards{grid-template-columns:1fr}.eco-card{min-height:0}.eco-logo{font-size:24px;}}
+
+/* ── Split Viz (sections 03+04 merged) ── */
+.split-viz{display:grid;grid-template-columns:1fr 1px 1fr;gap:0 44px;margin-top:32px;}
+.split-viz__divider{background:var(--border);}
+.split-col__head{font-family:var(--font-d);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);padding-bottom:14px;margin-bottom:22px;border-bottom:1px solid var(--border);}
+.sv-row{margin-bottom:22px;}
+.sv-row__top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:5px;}
+.sv-row__name{font-family:var(--font-b);font-size:13px;font-weight:500;color:var(--txt-sec);padding-right:12px;}
+.sv-row__num{font-family:var(--font-d);font-size:28px;font-weight:700;color:var(--sv-col,var(--accent));line-height:1;white-space:nowrap;font-variant-numeric:tabular-nums;}
+.sv-row__track{height:2px;background:rgba(139,205,255,.08);border-radius:1px;margin-bottom:5px;overflow:hidden;}
+.sv-row__fill{height:100%;width:var(--sv-w,0%);background:var(--sv-col,var(--accent));border-radius:1px;}
+.sv-row__pct{font-family:var(--font-b);font-size:11px;color:var(--txt-muted);}
+.split-viz__note{grid-column:1/-1;font-size:11px;color:var(--txt-muted);margin-top:18px;padding-top:14px;border-top:1px solid var(--border);}
+@media(max-width:700px){.split-viz{grid-template-columns:1fr;gap:32px 0;}.split-viz__divider{display:none;}}
+
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="cover__photo"><img src="deploy/cover-87.jpg" alt="Cover" /></div>
+  <div class="cover__overlay"></div>
+  <div class="cover__topbar">
+    <div class="cover__logo"><img src="deploy/logo clear.svg" alt="Astara Intelligence" /></div>
+    <div class="cover__divider"></div>
+    <div class="cover__label">In Depth #87</div>
+  </div>
+  <div class="cover__content">
+    <div class="cover__pill"><span>Strategy &middot; Technology &middot; Automotive</span></div>
+    <h1 class="cover__title">Auto OEMs are becoming<br><span>technology-industrial platforms</span></h1>
+    <p class="cover__sub">37 strategic moves &mdash; from 2016 to 2026 &mdash; show how the boundaries of the automotive industry are dissolving into AI, semiconductors, robotics and advanced aerial mobility.</p>
+  </div>
+</div>
+
+<!-- 01 THESIS -->
+<section>
+<div class="chapter reveal">
+  <div class="chapter-label"><span class="chapter-num">01</span><span class="chapter-label-text">The Thesis</span></div>
+  <h2 class="chapter-title">The boundaries of the automotive industry are <span>becoming increasingly difficult to define</span></h2>
+  <div class="two-col--6040">
+    <div>
+      <p class="body-text">The boundaries of the automotive industry are becoming increasingly difficult to define. Automakers that historically concentrated on designing, manufacturing and selling vehicles are now investing in autonomous mobility, artificial intelligence, semiconductors, robotics and advanced aerial mobility. The table records 37 strategic moves between 2016 and 2026, with 21 occurring from 2024 onwards. Although the database is a selected sample rather than a complete census of the industry, the recent acceleration suggests that these activities are moving from experimental projects towards more central elements of OEM strategy.</p>
+      <p class="body-text">This should not be understood as random diversification into unrelated industries. Most of these sectors are connected by a common technological stack. Autonomous vehicles need artificial intelligence, high-performance processors, sensors and software platforms. Humanoid robots use many of the same technologies for perception, decision-making, motion control and interaction with the physical world. Advanced aerial mobility combines electric propulsion, lightweight manufacturing, automation and safety-critical software.</p>
+      <p class="body-text">Artificial intelligence is therefore the connective tissue of the expansion: it appears in 16 of the 37 recorded cases when multi-sector projects are counted in every relevant category, compared with 13 cases involving autonomous mobility, ten involving semiconductors, and seven each involving robotics and advanced aerial mobility.</p>
+      <div class="pull-quote">
+        <p>The competitive question is gradually changing from which company can manufacture the best car to which company can control the most valuable parts of the technology stack and apply them across vehicles, factories, robots and new mobility services.</p>
+      </div>
+    </div>
+    <div class="signal-stack reveal reveal-d1">
+      <div class="signal-card" style="--signal-color:var(--col-ai)">
+        <div class="signal-card__value">16</div>
+        <div class="signal-card__label">AI-related cases</div>
+        <div class="signal-card__text">The most recurrent capability across the selected moves.</div>
+      </div>
+      <div class="signal-card" style="--signal-color:var(--col-auto)">
+        <div class="signal-card__value">15</div>
+        <div class="signal-card__label">Strategic partnerships</div>
+        <div class="signal-card__text">The dominant route for accessing specialist technology and sharing risk.</div>
+      </div>
+      <div class="signal-card" style="--signal-color:var(--accent2)">
+        <div class="signal-card__value">21</div>
+        <div class="signal-card__label">Moves since 2024</div>
+        <div class="signal-card__text">More than half of the selected sample has occurred in the latest period.</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- 02 KPIs -->
+<section style="background:var(--bg-dark);">
+<div class="chapter reveal">
+  <div class="chapter-label"><span class="chapter-num">02</span><span class="chapter-label-text">The Numbers</span></div>
+  <h2 class="chapter-title">37 moves. <span>21 since 2024.</span></h2>
+  <div class="kpi-strip reveal reveal-d1">
+    <div class="kpi-card"><div class="kpi-card__val">37</div><div class="kpi-card__label">Strategic moves<br>2016&ndash;2026</div></div>
+    <div class="kpi-card"><div class="kpi-card__val" style="color:var(--accent2)">21</div><div class="kpi-card__label">Moves since<br>2024</div></div>
+    <div class="kpi-card"><div class="kpi-card__val" style="color:var(--col-ai)">16</div><div class="kpi-card__label">Cases involving<br>AI</div></div>
+    <div class="kpi-card"><div class="kpi-card__val" style="color:var(--col-chips)">15</div><div class="kpi-card__label">Strategic<br>partnerships</div></div>
+    <div class="kpi-card"><div class="kpi-card__val" style="color:var(--col-aerial)">$894M</div><div class="kpi-card__label">Toyota&rarr;Joby<br>total commitment</div></div>
+    <div class="kpi-card"><div class="kpi-card__val" style="color:var(--col-chips)">$16B</div><div class="kpi-card__label">Waymo raise<br>2026 YTD</div></div>
+  </div>
+  <div class="two-col reveal reveal-d2" style="margin-top:40px;">
+    <div>
+      <p class="body-text">The way OEMs are entering these sectors is also significant. Strategic partnerships and research alliances represent 15 of the 37 cases, making them the most frequent mechanism. This indicates that most manufacturers do not believe they can build every capability alone. Partnerships allow them to access specialist knowledge while sharing development costs and technological risk.</p>
+      <p class="body-text">Joint ventures provide greater control when a capability becomes strategically important, while internal programmes suggest that some OEMs are beginning to treat artificial intelligence, chip design and robotics as core competencies rather than technologies that can simply be purchased from suppliers.</p>
+    </div>
+    <div>
+      <p class="body-text">Repeated investments by the same companies reinforce this interpretation. Toyota has progressively expanded its relationship with Joby Aviation from venture investment to manufacturing cooperation and a joint venture. Volkswagen has developed parallel relationships with Horizon Robotics, XPeng and Qualcomm covering chips, automated driving and vehicle architecture. Mercedes-Benz has deepened its work with NVIDIA from an autonomous-driving computing platform to artificial intelligence, industrial digital twins and fleet-wide computing infrastructure.</p>
+      <p class="body-text">These are not isolated financial bets; they are multi-year attempts to construct new capability platforms.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<div class="section-divider"></div>
+
+
+<!-- 03 SECTORS + ENTRY MECHANISMS (merged) -->
+<section>
+<div class="chapter reveal">
+  <div class="chapter-label"><span class="chapter-num">03</span><span class="chapter-label-text">Strategic Breakdown</span></div>
+  <h2 class="chapter-title">Where OEMs expand <span>and how they enter</span></h2>
+  <p class="body-lead">AI is the most recurrent capability across the sample. Partnerships are the dominant entry route, distributing development cost and technological risk across partners. Because one move can involve several sectors, sector totals exceed 37.</p>
+  <div class="split-viz reveal reveal-d1">
+    <div class="split-col">
+      <div class="split-col__head">Industry Sectors</div>
+      <div class="sv-row" style="--sv-col:var(--col-ai);--sv-w:100%">
+        <div class="sv-row__top"><span class="sv-row__name">Artificial Intelligence</span><span class="sv-row__num">16</span></div>
+        <div class="sv-row__track"><div class="sv-row__fill"></div></div>
+        <span class="sv-row__pct">43.2%</span>
+      </div>
+      <div class="sv-row" style="--sv-col:var(--col-auto);--sv-w:81.25%">
+        <div class="sv-row__top"><span class="sv-row__name">Autonomous Mobility</span><span class="sv-row__num">13</span></div>
+        <div class="sv-row__track"><div class="sv-row__fill"></div></div>
+        <span class="sv-row__pct">35.1%</span>
+      </div>
+      <div class="sv-row" style="--sv-col:var(--col-chips);--sv-w:62.5%">
+        <div class="sv-row__top"><span class="sv-row__name">Chips &amp; Semiconductors</span><span class="sv-row__num">10</span></div>
+        <div class="sv-row__track"><div class="sv-row__fill"></div></div>
+        <span class="sv-row__pct">27.0%</span>
+      </div>
+      <div class="sv-row" style="--sv-col:var(--col-robot);--sv-w:43.75%">
+        <div class="sv-row__top"><span class="sv-row__name">Robotics</span><span class="sv-row__num">7</span></div>
+        <div class="sv-row__track"><div class="sv-row__fill"></div></div>
+        <span class="sv-row__pct">18.9%</span>
+      </div>
+      <div class="sv-row" style="--sv-col:var(--col-aerial);--sv-w:43.75%">
+        <div class="sv-row__top"><span class="sv-row__name">Advanced Aerial Mobility</span><span class="sv-row__num">7</span></div>
+        <div class="sv-row__track"><div class="sv-row__fill"></div></div>
+        <span class="sv-row__pct">18.9%</span>
+      </div>
+    </div>
+    <div class="split-viz__divider"></div>
+    <div class="split-col">
+      <div class="split-col__head">Entry Mechanisms</div>
+      <div class="sv-row" style="--sv-col:var(--col-auto);--sv-w:100%">
+        <div class="sv-row__top"><span class="sv-row__name">Strategic Partnership</span><span class="sv-row__num">15</span></div>
+        <div class="sv-row__track"><div class="sv-row__fill"></div></div>
+        <span class="sv-row__pct">40.5%</span>
+      </div>
+      <div class="sv-row" style="--sv-col:var(--accent2);--sv-w:46.67%">
+        <div class="sv-row__top"><span class="sv-row__name">Venture Investment</span><span class="sv-row__num">7</span></div>
+        <div class="sv-row__track"><div class="sv-row__fill"></div></div>
+        <span class="sv-row__pct">18.9%</span>
+      </div>
+      <div class="sv-row" style="--sv-col:var(--col-aerial);--sv-w:40%">
+        <div class="sv-row__top"><span class="sv-row__name">Joint Venture</span><span class="sv-row__num">6</span></div>
+        <div class="sv-row__track"><div class="sv-row__fill"></div></div>
+        <span class="sv-row__pct">16.2%</span>
+      </div>
+      <div class="sv-row" style="--sv-col:var(--col-ai);--sv-w:33.33%">
+        <div class="sv-row__top"><span class="sv-row__name">M&amp;A</span><span class="sv-row__num">5</span></div>
+        <div class="sv-row__track"><div class="sv-row__fill"></div></div>
+        <span class="sv-row__pct">13.5%</span>
+      </div>
+      <div class="sv-row" style="--sv-col:var(--col-robot);--sv-w:26.67%">
+        <div class="sv-row__top"><span class="sv-row__name">Internal Development</span><span class="sv-row__num">4</span></div>
+        <div class="sv-row__track"><div class="sv-row__fill"></div></div>
+        <span class="sv-row__pct">10.8%</span>
+      </div>
+    </div>
+    <p class="split-viz__note">Multi-sector cases are counted in each relevant category, so sector totals exceed 37. &nbsp;·&nbsp; Source: selected sample of 37 OEM strategic moves, 2016&ndash;2026.</p>
+  </div>
+</div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- 04 TIMELINE -->
+<section>
+<div class="chapter reveal">
+  <div class="chapter-label"><span class="chapter-num">04</span><span class="chapter-label-text">OEM Timeline</span></div>
+  <h2 class="chapter-title">37 moves across <span>a decade</span></h2>
+  <div class="timeline reveal reveal-d1">
+    <div class="tl-year-group">
+      <div class="tl-year-label">2016</div>
+      <div class="tl-entry"><div class="tl-dot" style="background:var(--col-auto)"></div><div class="tl-card tl-card--auto"><div class="tl-card__oem">General Motors &middot; USA</div><div class="tl-card__partner">Cruise Automation</div><div class="tl-card__desc">Acquired San Francisco self-driving startup (~$1B) to build Level 4 AV software and sensor stack</div><div class="tl-card__tags"><span class="tl-tag tl-tag--auto">Autonomous Mobility</span><span class="tl-tag tl-tag--mech">M&amp;A</span></div></div></div>
+    </div>
+    <div class="tl-year-group">
+      <div class="tl-year-label">2017</div>
+      <div class="tl-entry"><div class="tl-dot" style="background:var(--col-auto)"></div><div class="tl-card tl-card--auto"><div class="tl-card__oem">Ford &middot; USA</div><div class="tl-card__partner">Argo AI</div><div class="tl-card__desc">Committed $1B over five years to fund AV software startup alongside Volkswagen</div><div class="tl-card__tags"><span class="tl-tag tl-tag--auto">Autonomous Mobility</span><span class="tl-tag tl-tag--mech">Venture Investment</span></div></div></div>
+      <div class="tl-entry"><div class="tl-dot" style="background:var(--col-auto)"></div><div class="tl-card tl-card--auto"><div class="tl-card__oem">Baidu / BAIC / Chery / FAW / Great Wall / Daimler / Ford &middot; China</div><div class="tl-card__partner">Apollo Alliance</div><div class="tl-card__desc">50+ partner open self-driving platform ("Android of AV") &mdash; automakers and Tier-1s join Apollo ecosystem</div><div class="tl-card__tags"><span class="tl-tag tl-tag--auto">Autonomous Mobility</span><span class="tl-tag tl-tag--mech">Strategic Partnership</span></div></div></div>
+    </div>
+    <div class="tl-year-group">
+      <div class="tl-year-label">2019</div>
+      <div class="tl-entry"><div class="tl-dot" style="background:var(--col-chips)"></div><div class="tl-card tl-card--chips"><div class="tl-card__oem">Geely (via ECARX) &middot; China</div><div class="tl-card__partner">ARM China &mdash; Siengine JV</div><div class="tl-card__desc">JV to design 7nm automotive SoCs (E-Series, later SE1000) manufactured via TSMC</div><div class="tl-card__tags"><span class="tl-tag tl-tag--chips">Chips &amp; Semiconductors</span><span class="tl-tag tl-tag--mech">Joint Venture</span></div></div></div>
+      <div class="tl-entry"><div class="tl-dot" style="background:var(--col-aerial)"></div><div class="tl-card tl-card--aerial"><div class="tl-card__oem">Toyota &middot; Japan</div><div class="tl-card__partner">Joby Aviation</div><div class="tl-card__desc">Lead investor in Joby's $590M Series C ($394M from Toyota) for eVTOL air taxi development</div><div class="tl-card__tags"><span class="tl-tag tl-tag--aerial">Advanced Aerial Mobility</span><span class="tl-tag tl-tag--mech">Venture Investment</span></div></div></div>
+      <div class="tl-entry"><div class="tl-dot" style="background:var(--col-ai)"></div><div class="tl-card tl-card--ai"><div class="tl-card__oem">Mercedes-Benz &middot; EU</div><div class="tl-card__partner">NVIDIA</div><div class="tl-card__desc">Joint development of software-defined AV computing architecture on NVIDIA DRIVE Orin, fleet-wide from 2024</div><div class="tl-card__tags"><span class="tl-tag tl-tag--auto">Autonomous Mobility</span><span class="tl-tag tl-tag--ai">AI</span><span class="tl-tag tl-tag--mech">Strategic Partnership</span></div></div></div>
+    </div>
+    <div class="tl-year-group">
+      <div class="tl-year-label">2020</div>
+      <div class="tl-entry"><div class="tl-dot" style="background:var(--col-robot)"></div><div class="tl-card tl-card--robot"><div class="tl-card__oem">Hyundai Motor Group &middot; South Korea</div><div class="tl-card__partner">Boston Dynamics</div><div class="tl-card__desc">Acquired 80% controlling stake from SoftBank for $1.1B to build robotics value chain and AV/UAM synergies</div><div class="tl-card__tags"><span class="tl-tag tl-tag--robot">Robotics</span><span class="tl-tag tl-tag--mech">M&amp;A</span></div></div></div>
+    </div>
+    <div class="tl-year-group">
+      <div class="tl-year-label">2021</div>
+      <div class="tl-entry"><div class="tl-dot" style="background:var(--col-auto)"></div><div class="tl-card tl-card--auto"><div class="tl-card__oem">SAIC Motor &middot; China</div><div class="tl-card__partner">Momenta</div><div class="tl-card__desc">Participated in ~$500M Series C (with Toyota, Bosch) for autonomous driving tech for Zhiji EV brand</div><div class="tl-card__tags"><span class="tl-tag tl-tag--auto">Autonomous Mobility</span><span class="tl-tag tl-tag--mech">Venture Investment</span></div></div></div>
+      <div class="tl-entry"><div class="tl-dot" style="background:var(--col-chips)"></div><div class="tl-card tl-card--chips"><div class="tl-card__oem">Geely (ECARX) &middot; China</div><div class="tl-card__partner">Series A+ Round ($200M+)</div><div class="tl-card__desc">$200M+ at $2B valuation for automotive chips, smart cockpit, HD mapping R&amp;D</div><div class="tl-card__tags"><span class="tl-tag tl-tag--chips">Chips &amp; Semiconductors</span><span class="tl-tag tl-tag--ai">AI</span><span class="tl-tag tl-tag--mech">Venture Investment</span></div></div></div>
+    </div>
+    <div class="tl-year-group">
+      <div class="tl-year-label">2022</div>
+      <div class="tl-entry"><div class="tl-dot" style="background:var(--col-auto)"></div><div class="tl-card tl-card--auto"><div class="tl-card__oem">Ford / Volkswagen &middot; USA / EU</div><div class="tl-card__partner">Argo AI &mdash; Shutdown</div><div class="tl-card__desc">Argo AI shut down after $3.6B combined investment &mdash; a cautionary tale of autonomous mobility's difficulty</div><div class="tl-card__tags"><span class="tl-tag tl-tag--auto">Autonomous Mobility</span><span class="tl-tag tl-tag--mech">M&amp;A</span></div></div></div>
+      <div class="tl-entry"><div class="tl-dot" style="background:var(--col-chips)"></div><div class="tl-card tl-card--chips"><div class="tl-card__oem">Volkswagen Group (CARIAD) &middot; EU</div><div class="tl-card__partner">Horizon Robotics</div><div class="tl-card__desc">~&euro;2.4B investment in Chinese AI chip and ADAS technology company</div><div class="tl-card__tags"><span class="tl-tag tl-tag--chips">Chips &amp; Semiconductors</span><span class="tl-tag tl-tag--auto">Autonomous Mobility</span><span class="tl-tag tl-tag--mech">Joint Venture</span></div></div></div>
+      <div class="tl-entry"><div class="tl-dot" style="background:var(--col-aerial)"></div><div class="tl-card tl-card--aerial"><div class="tl-card__oem">Stellantis &middot; EU</div><div class="tl-card__partner">Archer Aviation</div><div class="tl-card__desc">$150M equity commitment plus exclusive contract manufacturing rights for Archer's Midnight eVTOL</div><div class="tl-card__tags"><span class="tl-tag tl-tag--aerial">Advanced Aerial Mobility</span><span class="tl-tag tl-tag--mech">Strategic Partnership</span></div></div></div>
+      <div class="tl-entry"><div class="tl-dot" style="background:var(--col-chips)"></div><div class="tl-card tl-card--chips"><div class="tl-card__oem">Volkswagen Group (CARIAD) &middot; EU</div><div class="tl-card__partner">Qualcomm</div><div class="tl-card__desc">~&euro;1B multiyear deal (2022&ndash;2031) for Snapdragon Ride SoCs across all VW brands from 2026</div><div class="tl-card__tags"><span class="tl-tag tl-tag--chips">Chips &amp; Semiconductors</span><span class="tl-tag tl-tag--mech">Strategic Partnership</span></div></div></div>
+    </div>
+    <div class="tl-year-group">
+      <div class="tl-year-label">2023</div>
+      <div class="tl-entry"><div class="tl-dot" style="background:var(--col-ai)"></div><div class="tl-card tl-card--ai"><div class="tl-card__oem">Volkswagen Group &middot; EU</div><div class="tl-card__partner">XPeng</div><div class="tl-card__desc">$700M direct investment for a 4.99% stake in Chinese EV and AI pioneer</div><div class="tl-card__tags"><span class="tl-tag tl-tag--auto">Autonomous Mobility</span><span class="tl-tag tl-tag--ai">AI</span><span class="tl-tag tl-tag--mech">Strategic Partnership</span></div></div></div>
+      <div class="tl-entry"><div class="tl-dot" style="background:var(--col-aerial)"></div><div class="tl-card tl-card--aerial"><div class="tl-card__oem">Stellantis &middot; EU</div><div class="tl-card__partner">Archer Aviation (deepened)</div><div class="tl-card__desc">$110M direct investment plus $39M share purchase, deepening manufacturing alliance for Midnight eVTOL</div><div class="tl-card__tags"><span class="tl-tag tl-tag--aerial">Advanced Aerial Mobility</span><span class="tl-tag tl-tag--mech">Strategic Partnership</span></div></div></div>
+      <div class="tl-entry"><div class="tl-dot" style="background:var(--col-chips)"></div><div class="tl-card tl-card--chips"><div class="tl-card__oem">Volkswagen (CARIAD) &middot; EU</div><div class="tl-card__partner">Horizon Robotics &mdash; CARIZON JV formed</div><div class="tl-card__desc">Formal launch of "CARIZON" JV (RMB 6.76B registered capital) to develop ADAS/AD systems</div><div class="tl-card__tags"><span class="tl-tag tl-tag--chips">Chips &amp; Semiconductors</span><span class="tl-tag tl-tag--mech">Joint Venture</span></div></div></div>
+    </div>
+    <div class="tl-year-group">
+      <div class="tl-year-label">2024</div>
+      <div class="tl-entry"><div class="tl-dot" style="background:var(--col-robot)"></div><div class="tl-card tl-card--robot"><div class="tl-card__oem">XPeng &middot; China</div><div class="tl-card__partner">Iron Robot Gen 1 + Turing AI Chip</div><div class="tl-card__desc">Launched first-gen Iron humanoid robot (178cm, 70kg) powered by proprietary Turing AI chips &mdash; developed in-house</div><div class="tl-card__tags"><span class="tl-tag tl-tag--robot">Robotics</span><span class="tl-tag tl-tag--chips">Chips</span><span class="tl-tag tl-tag--ai">AI</span><span class="tl-tag tl-tag--mech">Internal Development</span></div></div></div>
+      <div class="tl-entry"><div class="tl-dot" style="background:var(--col-ai)"></div><div class="tl-card tl-card--ai"><div class="tl-card__oem">BMW / Mercedes-Benz / Maserati / Schaeffler / Volvo Cars &middot; EU</div><div class="tl-card__partner">NVIDIA European Industrial AI Cloud</div><div class="tl-card__desc">Adopted 10,000-GPU cloud for manufacturing digital twins and physical AI/robotics</div><div class="tl-card__tags"><span class="tl-tag tl-tag--ai">AI</span><span class="tl-tag tl-tag--mech">Strategic Partnership</span></div></div></div>
+      <div class="tl-entry"><div class="tl-dot" style="background:var(--col-robot)"></div><div class="tl-card tl-card--robot"><div class="tl-card__oem">Toyota Research Institute / Hyundai (Boston Dynamics) &middot; USA / Asia</div><div class="tl-card__partner">Large Behavior Models for Atlas</div><div class="tl-card__desc">Joint research on Large Behavior Models to power Atlas humanoid robot's AI-driven manipulation and locomotion</div><div class="tl-card__tags"><span class="tl-tag tl-tag--robot">Robotics</span><span class="tl-tag tl-tag--ai">AI</span><span class="tl-tag tl-tag--mech">Strategic Partnership</span></div></div></div>
+      <div class="tl-entry"><div class="tl-dot" style="background:var(--col-aerial)"></div><div class="tl-card tl-card--aerial"><div class="tl-card__oem">Archer Aviation / Stellantis &middot; EU</div><div class="tl-card__partner">Midnight eVTOL &mdash; $55M Milestone Funding</div><div class="tl-card__desc">$55M milestone-based funding tied to Midnight eVTOL's first transition flight</div><div class="tl-card__tags"><span class="tl-tag tl-tag--aerial">Advanced Aerial Mobility</span><span class="tl-tag tl-tag--mech">Strategic Partnership</span></div></div></div>
+      <div class="tl-entry"><div class="tl-dot" style="background:var(--col-aerial)"></div><div class="tl-card tl-card--aerial"><div class="tl-card__oem">Toyota &middot; Japan</div><div class="tl-card__partner">Joby Aviation (+$500M)</div><div class="tl-card__desc">Additional $500M investment (total ~$894M), designating Toyota as "preferred manufacturing partner"</div><div class="tl-card__tags"><span class="tl-tag tl-tag--aerial">Advanced Aerial Mobility</span><span class="tl-tag tl-tag--mech">Venture Investment</span></div></div></div>
+      <div class="tl-entry"><div class="tl-dot" style="background:var(--col-ai)"></div><div class="tl-card tl-card--ai"><div class="tl-card__oem">Volkswagen Group &middot; EU</div><div class="tl-card__partner">XPeng &mdash; Joint EV Architecture</div><div class="tl-card__desc">Joint development of new intelligent/electric vehicle architecture to cut China EV costs and development time by 30%</div><div class="tl-card__tags"><span class="tl-tag tl-tag--auto">Autonomous Mobility</span><span class="tl-tag tl-tag--ai">AI</span><span class="tl-tag tl-tag--mech">Strategic Partnership</span></div></div></div>
+    </div>
+    <div class="tl-year-group">
+      <div class="tl-year-label">2025</div>
+      <div class="tl-entry"><div class="tl-dot" style="background:var(--col-auto)"></div><div class="tl-card tl-card--auto"><div class="tl-card__oem">General Motors &middot; USA</div><div class="tl-card__partner">Cruise &mdash; Full Ownership &amp; Pivot</div><div class="tl-card__desc">Completed full ownership of Cruise ($10B+ cumulative investment since 2016), pivoting from robotaxis to personal-vehicle Super Cruise</div><div class="tl-card__tags"><span class="tl-tag tl-tag--auto">Autonomous Mobility</span><span class="tl-tag tl-tag--mech">M&amp;A</span></div></div></div>
+      <div class="tl-entry"><div class="tl-dot" style="background:var(--col-aerial)"></div><div class="tl-card tl-card--aerial"><div class="tl-card__oem">Toyota &middot; Japan</div><div class="tl-card__partner">Joby Aviation (first $250M tranche)</div><div class="tl-card__desc">Closed first $250M tranche of the $500M pledge, becoming Joby's largest external shareholder</div><div class="tl-card__tags"><span class="tl-tag tl-tag--aerial">Advanced Aerial Mobility</span><span class="tl-tag tl-tag--mech">Venture Investment</span></div></div></div>
+      <div class="tl-entry"><div class="tl-dot" style="background:var(--col-ai)"></div><div class="tl-card tl-card--ai"><div class="tl-card__oem">Mercedes-Benz &middot; EU</div><div class="tl-card__partner">NVIDIA &mdash; Alpamayo AV AI</div><div class="tl-card__desc">Launch of "Alpamayo" reasoning AV AI and NVIDIA DRIVE AV software in the new CLA (MB.OS platform)</div><div class="tl-card__tags"><span class="tl-tag tl-tag--auto">Autonomous Mobility</span><span class="tl-tag tl-tag--ai">AI</span><span class="tl-tag tl-tag--mech">Strategic Partnership</span></div></div></div>
+      <div class="tl-entry"><div class="tl-dot" style="background:var(--col-ai)"></div><div class="tl-card tl-card--ai"><div class="tl-card__oem">Volkswagen (CARIAD) / Horizon Robotics &middot; China JV</div><div class="tl-card__partner">CARIZON &mdash; SuperDrive Integration</div><div class="tl-card__desc">Deepened cooperation to integrate Horizon SuperDrive intelligent-driving tech via CARIZON JV</div><div class="tl-card__tags"><span class="tl-tag tl-tag--auto">Autonomous Mobility</span><span class="tl-tag tl-tag--ai">AI</span><span class="tl-tag tl-tag--mech">Joint Venture</span></div></div></div>
+      <div class="tl-entry"><div class="tl-dot" style="background:var(--col-robot)"></div><div class="tl-card tl-card--robot"><div class="tl-card__oem">XPeng &middot; China</div><div class="tl-card__partner">Iron Gen 2 + Next-Gen Turing Chips</div><div class="tl-card__desc">Unveiled Next-Gen Iron humanoid (82 DoF, solid-state battery, 3,000 TOPS via 3 Turing chips)</div><div class="tl-card__tags"><span class="tl-tag tl-tag--robot">Robotics</span><span class="tl-tag tl-tag--ai">AI</span><span class="tl-tag tl-tag--mech">Internal Development</span></div></div></div>
+      <div class="tl-entry"><div class="tl-dot" style="background:var(--col-robot)"></div><div class="tl-card tl-card--robot"><div class="tl-card__oem">Toyota Research Institute / Boston Dynamics &middot; USA / Asia</div><div class="tl-card__partner">Atlas &mdash; Large Behavior Model Demo</div><div class="tl-card__desc">Demonstrated Large Behavior Model enabling Atlas humanoid to perform continuous whole-body manipulation tasks</div><div class="tl-card__tags"><span class="tl-tag tl-tag--robot">Robotics</span><span class="tl-tag tl-tag--ai">AI</span><span class="tl-tag tl-tag--mech">Strategic Partnership</span></div></div></div>
+    </div>
+    <div class="tl-year-group">
+      <div class="tl-year-label">2026 <span class="ytd-badge">YTD</span></div>
+      <div class="tl-entry"><div class="tl-dot" style="background:var(--col-ai)"></div><div class="tl-card tl-card--ai"><div class="tl-card__oem">Volkswagen (CARIZON) / Horizon Robotics &middot; China JV</div><div class="tl-card__partner">C7H SoC + GAIA World Model</div><div class="tl-card__desc">White-box licensing of Horizon's AI foundation model into CARIZON's C7H SoC for L3/L4 rollout by 2027</div><div class="tl-card__tags"><span class="tl-tag tl-tag--auto">Autonomous Mobility</span><span class="tl-tag tl-tag--ai">AI</span><span class="tl-tag tl-tag--mech">Joint Venture</span></div></div></div>
+      <div class="tl-entry"><div class="tl-dot" style="background:var(--col-robot)"></div><div class="tl-card tl-card--robot"><div class="tl-card__oem">Mitsubishi Motors &middot; Japan</div><div class="tl-card__partner">Highlanders Inc. (Univ. of Tokyo startup)</div><div class="tl-card__desc">MOU to jointly develop AI-equipped humanoid robots for factory deployment</div><div class="tl-card__tags"><span class="tl-tag tl-tag--robot">Robotics</span><span class="tl-tag tl-tag--ai">AI</span><span class="tl-tag tl-tag--mech">Strategic Partnership</span></div></div></div>
+      <div class="tl-entry"><div class="tl-dot" style="background:var(--col-chips)"></div><div class="tl-card tl-card--chips"><div class="tl-card__oem">Li Auto &middot; China</div><div class="tl-card__partner">Mach M100 Chip (In-house)</div><div class="tl-card__desc">Registered new chip-design subsidiary in Shanghai FTZ; Mach M100 chip already in mass production on L9/L8/L6</div><div class="tl-card__tags"><span class="tl-tag tl-tag--chips">Chips &amp; Semiconductors</span><span class="tl-tag tl-tag--mech">Internal Development</span></div></div></div>
+      <div class="tl-entry"><div class="tl-dot" style="background:var(--col-chips)"></div><div class="tl-card tl-card--chips"><div class="tl-card__oem">Geely (ECARX) &middot; China</div><div class="tl-card__partner">Geely Holding &mdash; $45.6M Investment</div><div class="tl-card__desc">$45.6M strategic equity investment via share subscription to accelerate software/hardware R&amp;D</div><div class="tl-card__tags"><span class="tl-tag tl-tag--chips">Chips &amp; Semiconductors</span><span class="tl-tag tl-tag--mech">Venture Investment</span></div></div></div>
+      <div class="tl-entry"><div class="tl-dot" style="background:var(--col-aerial)"></div><div class="tl-card tl-card--aerial"><div class="tl-card__oem">Toyota &middot; Japan</div><div class="tl-card__partner">Joby Aviation &mdash; Manufacturing JV</div><div class="tl-card__desc">Established manufacturing JV ahead of a further $250M investment, deepening production standardization for eVTOL commercialization</div><div class="tl-card__tags"><span class="tl-tag tl-tag--aerial">Advanced Aerial Mobility</span><span class="tl-tag tl-tag--mech">Joint Venture</span></div></div></div>
+      <div class="tl-entry"><div class="tl-dot" style="background:var(--col-chips)"></div><div class="tl-card tl-card--chips"><div class="tl-card__oem">Volkswagen &middot; EU</div><div class="tl-card__partner">Qualcomm &mdash; Next-Gen LoI</div><div class="tl-card__desc">Signed Letter of Intent for next-generation digital driving-experience chip supply cooperation</div><div class="tl-card__tags"><span class="tl-tag tl-tag--chips">Chips &amp; Semiconductors</span><span class="tl-tag tl-tag--mech">Strategic Partnership</span></div></div></div>
+      <div class="tl-entry"><div class="tl-dot" style="background:var(--col-ai)"></div><div class="tl-card tl-card--ai"><div class="tl-card__oem">Mercedes-Benz &middot; EU</div><div class="tl-card__partner">NVIDIA DRIVE AGX / Halos &mdash; Fleet Rollout</div><div class="tl-card__desc">Continued rollout of DRIVE AGX/Halos safety architecture across full vehicle fleet</div><div class="tl-card__tags"><span class="tl-tag tl-tag--ai">AI</span><span class="tl-tag tl-tag--mech">Strategic Partnership</span></div></div></div>
+      <div class="tl-entry"><div class="tl-dot" style="background:var(--col-chips)"></div><div class="tl-card tl-card--chips"><div class="tl-card__oem">Tesla &middot; USA</div><div class="tl-card__partner">AI Hardware Acquisition (~$1.95B)</div><div class="tl-card__desc">~$1.95B stock-based acqui-hire of an AI hardware/patent team disclosed in Q2 2026 10-Q; tied to AI5/AI6 and Dojo-adjacent compute buildout</div><div class="tl-card__tags"><span class="tl-tag tl-tag--chips">Chips &amp; Semiconductors</span><span class="tl-tag tl-tag--ai">AI</span><span class="tl-tag tl-tag--mech">M&amp;A</span></div></div></div>
+      <div class="tl-entry"><div class="tl-dot" style="background:var(--col-robot)"></div><div class="tl-card tl-card--robot"><div class="tl-card__oem">BYD &middot; China</div><div class="tl-card__partner">"Xiao Di" Humanoid Robot</div><div class="tl-card__desc">Confirmed August 2026 debut for dealership/showroom customer service, after a four-year secret in-house program targeting 20,000 factory units</div><div class="tl-card__tags"><span class="tl-tag tl-tag--robot">Robotics</span><span class="tl-tag tl-tag--ai">AI</span><span class="tl-tag tl-tag--mech">Internal Development</span></div></div></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- 06 OEM ECOSYSTEMS -->
+<section style="background:var(--bg-dark);">
+<div class="chapter reveal">
+  <div class="chapter-label"><span class="chapter-num">05</span><span class="chapter-label-text">OEM Ecosystems</span></div>
+  <h2 class="chapter-title">Companies building <span>capability platforms</span></h2>
+  <p class="body-lead">Repeated moves reveal how selected manufacturers are building connected capability systems rather than making isolated technology bets.</p>
+  <div class="ecosystem-stack reveal reveal-d1">
+
+    <article class="ecosystem-panel">
+      <header class="eco-head"><div><div class="eco-kicker">OEM Ecosystem</div><h3 class="eco-title">Toyota</h3><p class="eco-sub">Japan · Advanced Aerial Mobility + Robotics</p></div></header>
+      <div class="eco-groups">
+        <section class="eco-group eco-group--wide" style="--group-color:var(--col-aerial);--cols:3"><div class="eco-group__title">Advanced Aerial Mobility</div><div class="eco-cards">
+          <div class="eco-card"><span class="eco-year">2019</span><h3>Joby Aviation</h3><div class="eco-card__move">Series C lead investment</div><p>$394M lead investment in eVTOL air taxi development.</p></div>
+          <div class="eco-card"><span class="eco-year">2024</span><h3>Joby Aviation</h3><div class="eco-card__move">$500M + Preferred Partner</div><p>Named preferred manufacturing partner; total commitment approximately $894M.</p></div>
+          <div class="eco-card"><span class="eco-year">2026</span><h3>Joby Aviation</h3><div class="eco-card__move">Manufacturing JV</div><p>From investor to manufacturer: joint venture to scale eVTOL production.</p></div>
+        </div></section>
+        <section class="eco-group eco-group--narrow" style="--group-color:#b89cff;--cols:1"><div class="eco-group__title">Robotics + AI</div><div class="eco-cards">
+          <div class="eco-card"><span class="eco-year">2024–25</span><h3>Boston Dynamics / Toyota Research Institute</h3><div class="eco-card__move">Large Behavior Models</div><p>Joint AI research on manipulation for the Atlas humanoid.</p></div>
+        </div></section>
+      </div><div class="eco-note">Source: company reports and press releases.</div>
+    </article>
+
+    <article class="ecosystem-panel">
+      <header class="eco-head"><div><div class="eco-kicker">OEM Ecosystem</div><h3 class="eco-title">Volkswagen Group</h3><p class="eco-sub">Europe · Chips + AI + Autonomous Mobility</p></div></header>
+      <div class="eco-groups">
+        <section class="eco-group eco-group--half" style="--group-color:var(--col-chips);--cols:2"><div class="eco-group__title">Chips + Computing</div><div class="eco-cards">
+          <div class="eco-card"><span class="eco-year">2022–26</span><h3>Qualcomm</h3><div class="eco-card__move">Snapdragon Ride + next-gen chips</div><p>Multiyear supply and development relationship supporting software-defined vehicle architectures.</p></div>
+          <div class="eco-card"><span class="eco-year">2022–26</span><h3>Horizon Robotics / CARIZON</h3><div class="eco-card__move">AI chips + joint venture</div><p>Chinese-market capability platform spanning SoCs, ADAS and world-model technology.</p></div>
+        </div></section>
+        <section class="eco-group eco-group--half" style="--group-color:var(--col-ai);--cols:2"><div class="eco-group__title">AI + Vehicle Architecture</div><div class="eco-cards">
+          <div class="eco-card"><span class="eco-year">2023–24</span><h3>XPeng</h3><div class="eco-card__move">Equity stake + joint EV architecture</div><p>$700M investment followed by joint development intended to reduce cost and development time.</p></div>
+          <div class="eco-card"><span class="eco-year">2022</span><h3>Argo AI</h3><div class="eco-card__move">Autonomous mobility exit</div><p>The shutdown illustrates the cost and uncertainty of building a full autonomous-driving stack.</p></div>
+        </div></section>
+      </div><div class="eco-note">Selected repeated moves from the 37-case database.</div>
+    </article>
+
+    <article class="ecosystem-panel">
+      <header class="eco-head"><div><div class="eco-kicker">OEM Ecosystem</div><h3 class="eco-title">Mercedes-Benz</h3><p class="eco-sub">Europe · AI + Autonomous Mobility</p></div></header>
+      <div class="eco-groups"><section class="eco-group" style="--group-color:var(--col-ai);--cols:3"><div class="eco-group__title">NVIDIA capability platform</div><div class="eco-cards">
+        <div class="eco-card"><span class="eco-year">2019</span><h3>NVIDIA DRIVE Orin</h3><div class="eco-card__move">AV computing architecture</div><p>Joint development of a fleet-wide software-defined autonomous-driving platform.</p></div>
+        <div class="eco-card"><span class="eco-year">2024–25</span><h3>Industrial AI + Alpamayo</h3><div class="eco-card__move">Digital twins and reasoning AV AI</div><p>The partnership expanded from vehicle compute into manufacturing and physical AI.</p></div>
+        <div class="eco-card"><span class="eco-year">2026</span><h3>DRIVE AGX / Halos</h3><div class="eco-card__move">Fleet rollout</div><p>Safety and computing architecture extended across the vehicle portfolio.</p></div>
+      </div></section></div>
+    </article>
+
+    <article class="ecosystem-panel">
+      <header class="eco-head"><div><div class="eco-kicker">OEM Ecosystem</div><h3 class="eco-title">Hyundai Motor Group</h3><p class="eco-sub">South Korea · Robotics + Physical AI</p></div></header>
+      <div class="eco-groups"><section class="eco-group" style="--group-color:#b89cff;--cols:2"><div class="eco-group__title">Robotics + AI</div><div class="eco-cards">
+        <div class="eco-card"><span class="eco-year">2020</span><h3>Boston Dynamics</h3><div class="eco-card__move">80% controlling stake</div><p>$1.1B acquisition created a bridge between automotive manufacturing, robotics and physical AI.</p></div>
+        <div class="eco-card"><span class="eco-year">2024–25</span><h3>Toyota Research Institute</h3><div class="eco-card__move">Large Behavior Models</div><p>Joint research enabling Atlas to perform AI-driven manipulation and locomotion.</p></div>
+      </div></section></div>
+    </article>
+
+    <article class="ecosystem-panel">
+      <header class="eco-head"><div><div class="eco-kicker">OEM Ecosystem</div><h3 class="eco-title">XPeng</h3><p class="eco-sub">China · Robotics + Chips + AI</p></div></header>
+      <div class="eco-groups"><section class="eco-group" style="--group-color:var(--col-robot);--cols:2"><div class="eco-group__title">Internal Development</div><div class="eco-cards">
+        <div class="eco-card"><span class="eco-year">2024</span><h3>Iron Gen 1 + Turing Chip</h3><div class="eco-card__move">Humanoid robotics platform</div><p>First-generation humanoid paired with XPeng's proprietary AI computing stack.</p></div>
+        <div class="eco-card"><span class="eco-year">2025</span><h3>Iron Gen 2</h3><div class="eco-card__move">3,000 TOPS compute</div><p>82 degrees of freedom, solid-state battery and three next-generation Turing chips.</p></div>
+      </div></section></div>
+    </article>
+
+    <article class="ecosystem-panel">
+      <header class="eco-head"><div><div class="eco-kicker">OEM Ecosystem</div><h3 class="eco-title">Geely / ECARX</h3><p class="eco-sub">China · Chips + Vehicle Software</p></div></header>
+      <div class="eco-groups"><section class="eco-group" style="--group-color:var(--col-chips);--cols:3"><div class="eco-group__title">Chips + Software</div><div class="eco-cards">
+        <div class="eco-card"><span class="eco-year">2019</span><h3>ARM China / Siengine</h3><div class="eco-card__move">Automotive chip joint venture</div><p>Development of 7nm automotive SoCs manufactured through TSMC.</p></div>
+        <div class="eco-card"><span class="eco-year">2021</span><h3>ECARX Series A+</h3><div class="eco-card__move">$200M+ growth round</div><p>Funding for smart cockpit, HD mapping and automotive chip-platform R&amp;D.</p></div>
+        <div class="eco-card"><span class="eco-year">2026</span><h3>Geely Holding</h3><div class="eco-card__move">Strategic re-investment</div><p>$45.6M equity investment to accelerate integrated software and hardware development.</p></div>
+      </div></section></div>
+    </article>
+
+  </div>
+</div>
+</section>
+
+
+<footer class="footer">
+  <img src="deploy/logo dark.svg" alt="Astara Intelligence" style="width:150px;height:auto;margin:0 auto 20px;opacity:0.6;" />
+  <div class="footer__divider"></div>
+  <p class="footer__text">Astara Intelligence In Depth is a weekly analysis of the automotive and mobility sector for professionals navigating strategic uncertainty.</p>
+  <p class="footer__disclaimer">This newsletter is produced for informational purposes only. The views expressed are those of Astara Intelligence and do not constitute investment advice. &copy; 2026 Astara Intelligence.</p>
+</footer>
+
+<script>
+const obs = new IntersectionObserver((e)=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add("visible");obs.unobserve(x.target);}});},{threshold:0.06});
+document.querySelectorAll(".reveal").forEach(el=>obs.observe(el));
+const barObs = new IntersectionObserver((e)=>{e.forEach(x=>{if(x.isIntersecting){x.target.querySelectorAll(".bar-fill").forEach(b=>{b.style.animation="none";b.offsetHeight;b.style.animation="";});barObs.unobserve(x.target);}});},{threshold:0.15});
+document.querySelectorAll(".bar-section").forEach(el=>barObs.observe(el));
+</script>
+</body>
+</html>
